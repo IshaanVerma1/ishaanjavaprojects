@@ -5,7 +5,7 @@ public class SimExecutor {
 //		System.out.println(Math.cos(Math.toRadians(144)));
 //		System.out.println(Math.sin(Math.toRadians(144)));
 		PositionCalculator program = new PositionCalculator(4, 1);
-		program.assignStartPositions();
+		program.assignPositions();
 		//System.out.println(program.toString());
 		//System.out.println("\n"+program.toString());
 	}
