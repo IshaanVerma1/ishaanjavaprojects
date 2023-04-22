@@ -51,11 +51,13 @@ public class PositionCalculator {
 		}
 	}
 	
-	public void movePoitns() {
+	public void movePoints() {
 		for(SimObject point : points) {
-			while(point.getxCoordinate() <= SQUARESIDE || point.getyCoordinate() <= SQUARESIDE) {
-				
-			}
+			//while(point.getxCoordinate() <= SQUARESIDE || point.getyCoordinate() <= SQUARESIDE) {
+			//	point.setxCoordinate(point.getxCoordinate() + (Math.random() * MOVLENGTH));
+			//	point.setyCoordinate(point.getyCoordinate() + (Math.random() * MOVLENGTH));
+			//}
+			
 		}
 	}
 	

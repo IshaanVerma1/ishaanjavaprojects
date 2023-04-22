@@ -7,5 +7,7 @@ public class SimExecutor {
 		PositionCalculator program = new PositionCalculator(4, 1);
 		program.assignStartPositions();
 		System.out.println(program.toString());
+		program.movePoints();
+		System.out.println("\n"+program.toString());
 	}
 }
