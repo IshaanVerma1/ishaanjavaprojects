@@ -32,7 +32,17 @@ public class PositionCalculator {
 	public void assignStartPositions() {
 		assignAngles();
 		assignPositions(initialCircleSize);
-	}
+		System.out.println(toString());
+				for(int i = 0; i < 10; i++) {
+					movePoints();
+					try {
+						Thread.sleep(1000);
+						printCurrentPositions();
+					} catch (InterruptedException e){
+						e.printStackTrace();
+					}
+				}		
+		}
 	
 	public void assignAngles() {
 		double position = POSITIONINCREMENT;
@@ -57,7 +67,24 @@ public class PositionCalculator {
 			//	point.setxCoordinate(point.getxCoordinate() + (Math.random() * MOVLENGTH));
 			//	point.setyCoordinate(point.getyCoordinate() + (Math.random() * MOVLENGTH));
 			//}
+			double angleOfMovement;
+			if(point.getyCoordinate() > 0) {
+				angleOfMovement = Math.random() * 181;
+			} else if(point.getyCoordinate() < 0) {
+				angleOfMovement = (Math.random() * 181) + 180;
+			} else if (point.getxCoordinate() > 0 && point.getyCoordinate() == 0) {
+				angleOfMovement = (Math.random() * 181) + 90;
+			} else if (point.getxCoordinate() < 0 && point.getyCoordinate() == 0) {
+				angleOfMovement = (Math.random() * 181) + 270;
+			} else {
+				angleOfMovement = -1;
+			}
 			
+			double xMovement = Math.cos(Math.toRadians(angleOfMovement));
+			double yMovement = Math.sin(Math.toRadians(angleOfMovement));
+			point.setxCoordinate(xMovement + point.getxCoordinate());
+			point.setyCoordinate(yMovement + point.getyCoordinate());
+			point.setAngle(angleOfMovement);
 		}
 	}
 	
@@ -72,6 +99,18 @@ public class PositionCalculator {
 			index++;
 		}
 		return str;
+	}
+	
+	public void printCurrentPositions() {
+		String str = "\n";
+		int index = 1;
+		for(SimObject point : points) {
+			str += "\npoint #" + index + " angle measure " + point.getAngle() + ", ";
+			str += "point # " + index + " X position: " + point.getxCoordinate() +
+				   ", Y position: " + point.getyCoordinate();
+			index++;
+		}
+		System.out.println(str);
 	}
 
 	public int getNumObjects() {

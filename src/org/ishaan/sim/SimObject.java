@@ -32,6 +32,6 @@ public class SimObject {
 	}
 
 	public void setAngle(double angle) {
-		this.angle = angle;
+		this.angle = Double.parseDouble(df.format(angle));
 	}
 }
